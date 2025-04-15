@@ -14,15 +14,18 @@ jobs:
         run: |
           echo "JIRA_KEY=$(echo '${{ github.event.pull_request.title }}' | grep -o '[A-Z]\+-[0-9]\+')" >> $GITHUB_OUTPUT
 
-      - name: Update Jira Issue to Done
+      - name: Login to Jira
+        uses: atlassian/gajira-login@v3
+        with:
+          site: ${{ secrets.JIRA_BASE_URL }}
+          email: ${{ secrets.JIRA_USER_EMAIL }}
+          apiToken: ${{ secrets.JIRA_API_TOKEN }}
+
+      - name: Transition Jira Issue to Done
         uses: atlassian/gajira-transition@v3
         with:
           issue: ${{ steps.extract.outputs.JIRA_KEY }}
           transition: Done
-        env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           
       - name: Notify Slack
         uses: slackapi/slack-github-action@v1.24.0
