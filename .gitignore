@@ -1,0 +1,29 @@
+# node_modules - nơi chứa toàn bộ thư viện cài bằng npm
+node_modules/
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# hệ thống tạm
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+# jest test coverage
+coverage/
+
+# VSCode settings (nếu bạn dùng VSCode)
+.vscode/
+
+# lock files (nếu bạn chỉ dùng 1 loại)
+# nếu dùng npm
+package-lock.json
+# nếu dùng yarn
+# yarn.lock
+
+# build
+dist/
+build/
