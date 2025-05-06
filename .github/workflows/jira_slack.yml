@@ -26,13 +26,3 @@ jobs:
         with:
           issue: ${{ steps.extract.outputs.JIRA_KEY }}
           transition: Done
-          
-      - name: Notify Slack
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-              "text": ":white_check_mark: Jira issue *${{ steps.extract.outputs.JIRA_KEY }}* has been closed successfully!"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
