@@ -3,4 +3,9 @@ part 1
 part 2
 part 3
 part 4
+<<<<<<< HEAD
 part 5
+=======
+part 5
+part 6
+>>>>>>> 3d7865ec80fbb4ac50f4c44a732340cfc9591b56
